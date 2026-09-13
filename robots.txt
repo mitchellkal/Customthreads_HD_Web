@@ -1,0 +1,9 @@
+# Alle Suchmaschinen und alle KI-Crawler duerfen die Seite lesen.
+# Das ist Absicht. GPTBot, ClaudeBot, PerplexityBot und Google-Extended
+# holen sich den Seiteninhalt hier direkt. Wer sie aussperrt, kommt in
+# den Antworten von ChatGPT, Claude und Perplexity nicht mehr vor.
+User-agent: *
+Allow: /
+Disallow: /anleitung/
+
+Sitemap: https://DEINE-DOMAIN.de/sitemap.xml

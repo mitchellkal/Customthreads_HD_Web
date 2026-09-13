@@ -1,0 +1,32 @@
+# Sicherheits-Header fuer Netlify und Cloudflare Pages.
+# Diese Datei wird vom Hoster automatisch gelesen, sie muss im obersten
+# Ordner liegen und darf keine Dateiendung haben.
+#
+# Auf einem klassischen Webhoster (IONOS, Strato, All-Inkl) macht statt
+# dieser Datei die .htaccess dieselbe Arbeit.
+# Auf Firebase Hosting steht dasselbe in der firebase.json.
+
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Bilder aendern sich fast nie, also darf der Browser sie lange behalten.
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS und JS aendern sich, wenn du etwas anpasst. Kuerzer cachen, damit
+# Besucher deine Aenderungen sehen, ohne den Cache leeren zu muessen.
+/css/*
+  Cache-Control: public, max-age=3600
+/js/*
+  Cache-Control: public, max-age=3600
+
+# Die Anleitungen gehen niemanden ausser dir etwas an.
+/anleitung/*
+  X-Robots-Tag: noindex, nofollow
